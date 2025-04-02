@@ -41,16 +41,5 @@ def get_target_issue_types():
     with open('target-issue-types.json', 'w') as target_file:
         json.dump(response, target_file, indent=4)    
 
-def get_issue_type_names(issue_types: list) -> list:
-    issue_type_names = [issue_type["name"] for issue_type in issue_types]
-    return issue_type_names
 
-def compare_issue_types() -> dict:
-    with open("source-issue-types.json") as source_file:
-        source_json = json.load(source_file)
-        source_names = set(get_issue_type_names(source_json))
-    with open("target-issue-types.json") as target_file:
-        target_json = json.load(target_file)
-        target_names = set(get_issue_type_names(target_json))
 
-    missing_types = source_names - target_names
