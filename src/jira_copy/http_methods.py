@@ -35,4 +35,16 @@ def POST(url:str, headers: dict={}, params: dict={}, data: dict={}) -> Response:
         print(response.text)
         response.raise_for_status()
 
-
+def DELETE(url:str, headers: dict={}, params: dict={}):
+    response = requests.request(
+        'DELETE',
+        url,
+        headers=headers,
+        params=params,
+        auth=authentication,
+        )
+    if response.status_code == 200:
+        return response
+    else:
+        print(response.text)
+        response.raise_for_status()
